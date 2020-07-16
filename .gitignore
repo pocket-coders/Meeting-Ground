@@ -2,11 +2,15 @@
 
 # dependencies
 /node_modules
+/db/node_modules
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+
+#Uncomment this to hide MongoDB password
+#/.env
 
 # production
 /build

@@ -6,8 +6,7 @@ import * as schema from "./schema/schema";
 const app: any = express();
 
 //REMEMBER TO HIDE PASSWORD FROM THIS LINE!!
-const mongo_URI: string =
-  "mongodb+srv://admin:Codelabs2020@meetinggrounddb.7jfca.mongodb.net/MeetingGroundDB?retryWrites=true&w=majority";
+const mongo_URI: string = process.env.REACT_APP_SECRET_KEY;
 
 mongoose
   .connect(mongo_URI, {
