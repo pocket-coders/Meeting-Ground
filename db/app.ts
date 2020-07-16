@@ -1,12 +1,12 @@
 import express = require("express");
 const { graphqlHTTP } = require("express-graphql");
-import schema from "./schema/schema";
 import * as mongoose from "mongoose";
+import * as schema from "./schema/schema";
 
-const app = express();
+const app: any = express();
 
 //REMEMBER TO HIDE PASSWORD FROM THIS LINE!!
-const mongo_URI =
+const mongo_URI: string =
   "mongodb+srv://admin:Codelabs2020@meetinggrounddb.7jfca.mongodb.net/MeetingGroundDB?retryWrites=true&w=majority";
 
 mongoose

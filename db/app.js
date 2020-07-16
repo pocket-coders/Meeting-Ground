@@ -2,8 +2,8 @@
 exports.__esModule = true;
 var express = require("express");
 var graphqlHTTP = require("express-graphql").graphqlHTTP;
-var schema_1 = require("./schema/schema");
 var mongoose = require("mongoose");
+var schema = require("./schema/schema");
 var app = express();
 //REMEMBER TO HIDE PASSWORD FROM THIS LINE!!
 var mongo_URI = "mongodb+srv://admin:Codelabs2020@meetinggrounddb.7jfca.mongodb.net/MeetingGroundDB?retryWrites=true&w=majority";
@@ -14,7 +14,7 @@ mongoose
 })
     .then(function () { return console.log("👍🏻 Connected to MongoDB Atlas"); })["catch"](function (err) { return console.log("Error: ", err.message); });
 app.use("/graphql", graphqlHTTP({
-    schema: schema_1["default"],
+    schema: schema,
     graphiql: true
 }));
 app.listen(4001, function () {
