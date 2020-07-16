@@ -17,6 +17,7 @@ import LoginPage from "./pages/login"; ///< index.jsx will be automatically impo
 
 import HomePage from "./pages/home";
 import NotFoundPage from "./pages/404";
+import SignUpPage from "./pages/signup";
 
 class App extends Component {
   render() {
@@ -28,6 +29,8 @@ class App extends Component {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/404" component={NotFoundPage} />
+          <Route exact path="/signup/:id" component={SignUpPage} />
+          {/*Check for link in server. if exists go to  SchedulePage -> userid*/}
           <Redirect to="/404" />
         </Switch>
       </Router>

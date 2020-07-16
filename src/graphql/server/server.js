@@ -10,6 +10,7 @@
 const { graphqlHTTP } = require("express-graphql");
 const express = require("express");
 const _ = require("lodash");
+const cors = require("cors");
 
 const server = express();
 
@@ -106,6 +107,13 @@ const RootQuery = new GraphQLObjectType({
       //     //hosts.find((host) => host.email === this.args.email);
       //   },
     },
+    link: {
+      type: LinkType,
+      args: { id: { type: GraphQLString } },
+      resolve(parent, args) {
+        return links.find((link) => link.link === args.id);
+      },
+    },
   },
 });
 
@@ -113,6 +121,7 @@ const schema = new GraphQLSchema({
   query: RootQuery,
 });
 
+server.use(cors());
 server.use(
   "/graphql",
   graphqlHTTP({
