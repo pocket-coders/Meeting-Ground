@@ -1,31 +1,22 @@
-const express = require("express");
-const { graphqlHTTP } = require("express-graphql");
-const schema = require("./schema/schema");
-const mongoose = require("mongoose");
-
-const app = express();
-
-// connect to mongoDB
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var graphqlHTTP = require("express-graphql").graphqlHTTP;
+var schema_1 = require("./schema/schema");
+var mongoose = require("mongoose");
+var app = express();
+//REMEMBER TO HIDE PASSWORD FROM THIS LINE!!
+var mongo_URI = "mongodb+srv://admin:Codelabs2020@meetinggrounddb.7jfca.mongodb.net/MeetingGroundDB?retryWrites=true&w=majority";
 mongoose
-  .connect(
-    //REMEMBER TO HIDE PASSWORD FROM THIS LINE!!
-    "mongodb+srv://admin:Codelabs2020@meetinggrounddb.7jfca.mongodb.net/MeetingGroundDB?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => console.log("👍🏻 Connected to MongoDB Atlas"))
-  .catch((err) => console.log("Error: ", err.message));
-
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
-
-app.listen(4001, () => {
-  console.log("🧩 Listening for requests on port 4001");
+    .connect(mongo_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then(function () { return console.log("👍🏻 Connected to MongoDB Atlas"); })["catch"](function (err) { return console.log("Error: ", err.message); });
+app.use("/graphql", graphqlHTTP({
+    schema: schema_1["default"],
+    graphiql: true
+}));
+app.listen(4001, function () {
+    console.log("🧩 Listening for requests on port 4001");
 });
